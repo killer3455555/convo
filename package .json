@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Run Stop Demo</title>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .box {
+      background: #222;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255, 0, 120, 0.5);
+      width: 300px;
+    }
+    .box h2 {
+      text-align: center;
+    }
+    .box input, .box select, .box button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+    }
+    .run { background-color: #28a745; color: white; }
+    .stop { background-color: #dc3545; color: white; }
+    .output { margin-top: 15px; font-weight: bold; color: #00ffcc; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Run/Stop Demo</h2>
+    <input type="text" id="token" placeholder="Enter Token" />
+    <button class="run" onclick="runTask()">Run</button>
+    <button class="stop" onclick="stopTask()">Stop</button>
+    <div class="output" id="output"></div>
+  </div>
+
+  <script>
+    let running = false;
+
+    function runTask() {
+      const token = document.getElementById("token").value;
+      if (token.trim() === "") {
+        alert("Please enter a token!");
+        return;
+      }
+      running = true;
+      document.getElementById("output").textContent = "Task started for token: " + token;
+    }
+
+    function stopTask() {
+      if (running) {
+        running = false;
+        document.getElementById("output").textContent = "Task stopped.";
+      } else {
+        document.getElementById("output").textContent = "No task running.";
+      }
+    }
+  </script>
+</body>
+</html>
